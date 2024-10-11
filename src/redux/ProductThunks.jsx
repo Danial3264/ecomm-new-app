@@ -43,9 +43,9 @@ export const updateProduct = createAsyncThunk(
         const formData = new FormData();
   
         // Append all form data
-        for (const key in updatedData) {
+        Object.keys(updatedData).forEach((key)=>{
           formData.append(key, updatedData[key]);
-        }
+        });
   
         // Make PUT request to update the product with image (if any)
         const res = await axios.put(`/products/${id}`, formData, {
